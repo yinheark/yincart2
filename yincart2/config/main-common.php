@@ -23,7 +23,7 @@ return [
         ],
     ],
     'params' => [
-        'imagePath' => '@common/files',
+        'imagePath' => '@upload',
         'imageDomain' => 'http://image.y.com',
     ]
 ];
