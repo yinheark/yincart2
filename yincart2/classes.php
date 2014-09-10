@@ -52,9 +52,11 @@ return [
         'customer'          => 'yincart\customer\models\Customer',
         'customerGroup'     => 'yincart\customer\models\CustomerGroup',
         'wish'              => 'yincart\customer\models\Wish',
+        'account'           => 'yincart\customer\models\Account',
         //sales models class
         'order'             => 'yincart\sales\models\Order',
         'orderItem'         => 'yincart\sales\models\OrderItem',
         'shippingCart'      => 'yincart\sales\models\ShippingCart',
+        'cart'              => 'yincart\sales\models\Cart',
     ]
 ];

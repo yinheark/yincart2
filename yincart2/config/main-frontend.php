@@ -19,5 +19,7 @@ return [
     ],
     'controllerMap' => [
         'item' => 'yincart\catalog\controllers\frontend\ItemController',
+        'cart' => 'yincart\sales\controllers\frontend\CartController',
+        'account' => 'yincart\customer\controllers\frontend\AccountController',
     ],
 ];

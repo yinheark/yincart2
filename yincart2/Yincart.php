@@ -11,7 +11,6 @@ use yii\base\UnknownMethodException;
 use yii\helpers\ArrayHelper;
 
 
-
 /**
  * Class Yincart
  * use yincart $container to create model for rewrite
@@ -58,9 +57,11 @@ use yii\helpers\ArrayHelper;
  * @method static \yincart\customer\models\Customer                      getCustomer(array $config = [])
  * @method static \yincart\customer\models\CustomerGroup                 getCustomerGroup(array $config = [])
  * @method static \yincart\customer\models\Wish                          getWish(array $config = [])
+ * @method static \yincart\customer\models\Account                       getAccount(array $config = [])
  * @method static \yincart\sales\models\Order                            getOrder(array $config = [])
  * @method static \yincart\sales\models\OrderItem                        getOrderItem(array $config = [])
  * @method static \yincart\sales\models\ShippingCart                     getShippingCart(array $config = [])
+ * @method static \yincart\sales\models\Cart                             getCart(array $config = [])
  *
  * ================================================================================
  *
@@ -104,9 +105,11 @@ use yii\helpers\ArrayHelper;
  * @method static string|\yincart\customer\models\Customer               getCustomerClass()
  * @method static string|\yincart\customer\models\CustomerGroup          getCustomerGroupClass()
  * @method static string|\yincart\customer\models\Wish                   getWishClass()
+ * @method static string|\yincart\customer\models\Account                getAccountClass()
  * @method static string|\yincart\sales\models\Order                     getOrderClass()
  * @method static string|\yincart\sales\models\OrderItem                 getOrderItemClass()
  * @method static string|\yincart\sales\models\ShippingCart              getShippingCartClass()
+ * @method static string|\yincart\sales\models\Cart                      getCartClass()
  *
  * @package yincart
  * @author jeremy.zhou(gao_lujie@live.cn)
@@ -133,7 +136,6 @@ class Yincart
         return call_user_func_array([self::$container, $name], $arguments);
     }
 }
-
 
 
 /**
@@ -179,9 +181,11 @@ class Yincart
  * @property \yincart\customer\models\Customer                    $customer
  * @property \yincart\customer\models\CustomerGroup               $customerGroup
  * @property \yincart\customer\models\Wish                        $wish
+ * @property \yincart\customer\models\Account                     $account
  * @property \yincart\sales\models\Order                          $order
  * @property \yincart\sales\models\OrderItem                      $orderItem
  * @property \yincart\sales\models\ShippingCart                   $shippingCart
+ * @property \yincart\sales\models\Cart                           $cart
  *
  * ================================================================================
  *
@@ -225,9 +229,11 @@ class Yincart
  * @property string|\yincart\customer\models\Customer             $customerClass
  * @property string|\yincart\customer\models\CustomerGroup        $customerGroupClass
  * @property string|\yincart\customer\models\Wish                 $wishClass
+ * @property string|\yincart\customer\models\Account              $accountClass
  * @property string|\yincart\sales\models\Order                   $orderClass
  * @property string|\yincart\sales\models\OrderItem               $orderItemClass
  * @property string|\yincart\sales\models\ShippingCart            $shippingCartClass
+ * @property string|\yincart\sales\models\Cart                    $cartClass
  *
  * ================================================================================
  *
@@ -271,9 +277,11 @@ class Yincart
  * @method \yincart\customer\models\Customer                      getCustomer(array $config = [])
  * @method \yincart\customer\models\CustomerGroup                 getCustomerGroup(array $config = [])
  * @method \yincart\customer\models\Wish                          getWish(array $config = [])
+ * @method \yincart\customer\models\Account                       getAccount(array $config = [])
  * @method \yincart\sales\models\Order                            getOrder(array $config = [])
  * @method \yincart\sales\models\OrderItem                        getOrderItem(array $config = [])
  * @method \yincart\sales\models\ShippingCart                     getShippingCart(array $config = [])
+ * @method \yincart\sales\models\Cart                             getCart(array $config = [])
  *
  * ================================================================================
  *
@@ -317,9 +325,11 @@ class Yincart
  * @method string|\yincart\customer\models\Customer               getCustomerClass()
  * @method string|\yincart\customer\models\CustomerGroup          getCustomerGroupClass()
  * @method string|\yincart\customer\models\Wish                   getWishClass()
+ * @method string|\yincart\customer\models\Account                getAccountClass()
  * @method string|\yincart\sales\models\Order                     getOrderClass()
  * @method string|\yincart\sales\models\OrderItem                 getOrderItemClass()
  * @method string|\yincart\sales\models\ShippingCart              getShippingCartClass()
+ * @method string|\yincart\sales\models\Cart                      getCartClass()
  *
  * @package yincart
  * @author jeremy.zhou(gao_lujie@live.cn)
@@ -374,8 +384,8 @@ class Container
                 }
             }
             $class = ['class' => $className];
-            if (count($arguments) == 1) {
-                $class = array_merge($class, $arguments[0]);
+            if (count($arguments) == 1 && is_array($arguments[0])) {
+                $class = ArrayHelper::merge($class, $arguments[0]);
             }
             return \Yii::createObject($class);
         }
