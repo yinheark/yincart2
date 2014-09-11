@@ -8,60 +8,75 @@
 namespace yincart\customer\controllers\frontend;
 
 use yincart\base\web\Controller;
+use yincart\Yincart;
 
 class AccountController extends Controller
 {
-    public function register()
+    public function actionLogin()
+    {
+        $loginForm = Yincart::$container->loginForm;
+        if (\Yii::$app->getRequest()->getIsPost()) {
+            $loginForm->load(\Yii::$app->getRequest()->post(), 'LoginForm');
+            if ($loginForm->login()) {
+                $this->redirect(['account/index']);
+            }
+        }
+        return $this->render('login', ['loginForm' => $loginForm]);
+    }
+
+    public function actionRegister()
+    {
+        $registerForm = Yincart::$container->registerForm;
+        if (\Yii::$app->getRequest()->getIsPost()) {
+            $registerForm->load(\Yii::$app->getRequest()->post(), 'RegisterForm');
+            if ($registerForm->register()) {
+                $this->redirect(['account/index']);
+            }
+        }
+        return $this->render('login', ['registerForm' => $registerForm]);
+    }
+
+    public function actionSendConfirmEmail()
     {
 
     }
 
-    public function sendConfirmEmail()
+    public function actionForgetPassword()
     {
 
     }
 
-    public function login()
+    public function actionSendForgetPasswordEmail()
     {
 
     }
 
-    public function forgetPassword()
+    public function actionAddress()
     {
 
     }
 
-    public function sendForgetPasswordEmail()
+    public function actionOrders()
     {
 
     }
 
-    public function address()
+    public function actionWishes()
     {
 
     }
 
-    public function orders()
+    public function actionSaveAddress()
     {
 
     }
 
-    public function wishes()
+    public function actionDelAddress()
     {
 
     }
 
-    public function saveAddress()
-    {
-
-    }
-
-    public function delAddress()
-    {
-
-    }
-
-    public function removeWish()
+    public function actionRemoveWish()
     {
 
     }

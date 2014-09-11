@@ -7,11 +7,18 @@
 
 return [
     'components' => [
+        'user' => [
+            'identityClass' => 'yincart\customer\Customer',
+        ],
         'view' => [
             'theme' => [
                 'pathMap' => [
                     '@app/views' => '@yincart/themes/garbini/views',
-                    '@app/widgets' => '@yincart/themes/garbini/widgets/views',
+                    '@app/widgets/views' => '@yincart/themes/garbini/widgets/views',
+                    '@yincart/widgets/views' => '@yincart/themes/garbini/widgets/views',
+                    '@yincart/catalog/widgets/views' => '@yincart/themes/garbini/widgets/views',
+                    '@yincart/customer/widgets/views' => '@yincart/themes/garbini/widgets/views',
+                    '@yincart/sales/widgets/views' => '@yincart/themes/garbini/widgets/views',
                 ],
 //                'baseUrl' => '@yincart/web/aceAdmin',
             ],

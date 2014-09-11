@@ -11,7 +11,11 @@ return [
             'theme' => [
                 'pathMap' => [
                     '@app/views' => '@yincart/themes/aceAdmin/views',
-                    '@app/widgets' => '@yincart/themes/aceAdmin/widgets/views',
+                    '@app/widgets/views' => '@yincart/themes/aceAdmin/widgets/views',
+                    '@yincart/widgets/views' => '@yincart/themes/aceAdmin/widgets/views',
+                    '@yincart/catalog/widgets/views' => '@yincart/themes/aceAdmin/widgets/views',
+                    '@yincart/customer/widgets/views' => '@yincart/themes/aceAdmin/widgets/views',
+                    '@yincart/sales/widgets/views' => '@yincart/themes/aceAdmin/widgets/views',
                 ],
 //                'baseUrl' => '@yincart/web/aceAdmin',
             ],

@@ -13,7 +13,7 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'yincart\customer\Customer',
             'enableAutoLogin' => true,
         ],
         'log' => [

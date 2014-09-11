@@ -59,7 +59,11 @@ $categoryMenu = $category ? $category->getCategoryMenu() : [];
                         <li><a href="<?= Url::to(['cms/about']) ?>">About</a></li>
                         <li><a href="<?= Url::to(['cms/blog']) ?>">Blog</a></li>
                         <li><a href="<?= Url::to(['cms/contact']) ?>">Contact</a></li>
-                        <li><a href="<?= Url::to(['account/login']) ?>">LogIn / Register</a></li>
+                        <?php if (Yii::$app->getUser()->getIsGuest()) { ?>
+                            <li><a href="<?= Url::to(['account/login']) ?>">LogIn / Register</a></li>
+                        <?php } else { ?>
+                            <li><a href="<?= Url::to(['account/index']) ?>"><?= Yii::$app->getUser()->getIdentity()->username ?></a></li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -82,25 +86,30 @@ $categoryMenu = $category ? $category->getCategoryMenu() : [];
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?= Url::home() ?>"><img src="<?= $garbiniPath[1] ?>/img/logo.png" alt="Garbini"
-                                                                   class="img-responsive"></a>
+                    <a class="navbar-brand" href="<?= Url::home() ?>"><img src="<?= $garbiniPath[1] ?>/img/logo.png"
+                                                                           alt="Garbini"
+                                                                           class="img-responsive"></a>
                 </div>
                 <div class="navbar-collapse collapse main-nav">
                     <ul class="nav navbar-nav navbar-right">
                         <?php foreach ($categoryMenu as $category) { ?>
                             <li class="dropdown">
                                 <?php if ($category['children']) { ?>
-                                    <a href="<?= Url::to(['catalog/' . $category['category_id']]) ?>" class="dropdown-toggle" data-toggle="dropdown">
+                                    <a href="<?= Url::to(['catalog/' . $category['category_id']]) ?>"
+                                       class="dropdown-toggle" data-toggle="dropdown">
                                         <?= $category['name'] ?>
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php foreach ($category['children'] as $childCategory) { ?>
-                                            <li><a href="<?= Url::to(['catalog/' . $childCategory['category_id']]) ?>"><?= $childCategory['name'] ?></a></li>
+                                            <li>
+                                                <a href="<?= Url::to(['catalog/' . $childCategory['category_id']]) ?>"><?= $childCategory['name'] ?></a>
+                                            </li>
                                         <?php } ?>
                                     </ul>
                                 <?php } else { ?>
-                                    <a href="<?= Url::to(['catalog/' . $category['category_id']]) ?>" class="dropdown-toggle" data-toggle=""><?= $category['name'] ?></a>
+                                    <a href="<?= Url::to(['catalog/' . $category['category_id']]) ?>"
+                                       class="dropdown-toggle" data-toggle=""><?= $category['name'] ?></a>
                                 <?php } ?>
                             </li>
                         <?php } ?>

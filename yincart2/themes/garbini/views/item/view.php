@@ -5,9 +5,6 @@
  * @license http://www.yincart.com/license/
  */
 
-use yii\bootstrap\ActiveForm;
-use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\helpers\Url;
 use yincart\base\helpers\Image;
 use yincart\Yincart;
@@ -15,23 +12,12 @@ use yincart\Yincart;
 /** @var yii\web\View $this */
 /** @var \yincart\catalog\models\Item $item */
 
-$jsAssetFolder = $this->getAssetManager()->publish('@yincart/themes/garbini/web/js');
-$this->registerJsFile($jsAssetFolder[1] . '/item.js', [Yincart::$container->garbiniAssetClass, Yincart::$container->jqueryFormAssetClass]);
-
 $items = $item->getItems();
-$skus = $item->skus;
-$outProperties = [];
-foreach ($skus as $key => $sku) {
-    if ($sku->stock_qty == 0) {
-        $outProperties[] = $sku->properties;
-    }
-
-    $skus[$sku->properties] = $sku;
-    unset($skus[$key]);
-}
 
 $propValueModel = $item->getPropValueModel();
 $saleProps = $propValueModel->getSaleProps();
+
+$itemPropSelectClass = Yincart::$container->itemPropSelectClass;
 ?>
 <section id="content">
 <div class="container">
@@ -61,8 +47,12 @@ $saleProps = $propValueModel->getSaleProps();
         <h1 class="product_title"><?= $item->name ?></h1>
 
         <p class="price">
-            <sup>$</sup><span class="amount"><?= $item->price ?></span><sup>00</sup>
+            <sup>$</sup><span class="amount"><?= floor($item->price); ?></span><sup><?= explode('.', number_format($item->price, 2))[1] ?></sup>
         </p>
+
+        <script type="text/juicer" id="item-price">
+            <sup>$</sup><span class="amount">${intPrice}</span><sup>${floatPrice}</sup>
+        </script>
 
         <h3>Description</h3>
 
@@ -72,69 +62,7 @@ $saleProps = $propValueModel->getSaleProps();
 
         <h3>Very Few Items Left!</h3>
 
-        <style type="text/css">
-            .item-prop-value {
-                border: 1px solid #AAAAAA;
-                padding: 3px 15px;
-                margin-right: 30px;
-                margin-bottom: 5px;
-                cursor: pointer;
-                float: left;
-            }
-
-            .item-prop-value:hover {
-                border: 1px solid red;
-                padding: 3px 15px;
-            }
-
-            .item-prop-value-selected {
-                border: 2px solid red !important;
-                padding: 2px 14px !important;
-            }
-
-            .item-prop-value-disable {
-                cursor: not-allowed !important;
-                background-color: #EEEEEE !important;
-                border: 1px solid #AAAAAA !important;
-            }
-        </style>
-
-
-        <div class="variations" data-item='<?= Json::encode($item) ?>' data-skus='<?= Json::encode($skus) ?>'
-             data-out-properties='<?= Json::encode($outProperties) ?>'>
-            <?php foreach ($saleProps as $saleProp) {
-                /** @var \yincart\catalog\models\ItemProp $itemProp */
-                $itemProp = $saleProp['itemProp'];
-                /** @var \yincart\catalog\models\PropValue[] $propValues */
-                $propValues = $saleProp['propValues'];
-                ?>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <?= $itemProp->name ?>
-                    </div>
-                    <div class="col-sm-5">
-                        <?php foreach ($propValues as $propValue) { ?>
-                            <div class="item-prop-value"
-                                 data-prop-value="<?= $propValue->item_prop_id . ':' . $propValue->prop_value_id ?>"><?= $propValue->name ?></div>
-                        <?php } ?>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
-
-        <?php $cartForm = ActiveForm::begin(['id' => 'cart-form', 'action' => ['cart/add']]) ?>
-            <div class="quantity buttons_added">
-                <?= Html::hiddenInput('item_id', $item->item_id) ?>
-                <?= Html::hiddenInput('sku_id', 0) ?>
-                <button class="minus"><i class="fa fa-minus"></i></button>
-                <input type="number" size="4" class="qty text form-control" title="Qty" value="1" name="qty" step="1">
-                <button class="plus"><i class="fa fa-plus"></i></button>
-                <span class="item_stock">(stock <?= $item->stock_qty ?>)</span>
-            </div>
-
-            <input type="submit" class="btn btn-primary btn-lg" id="add-to-cart" value="Add to Cart">
-        <?php $cartForm->end() ?>
-
+        <?= $itemPropSelectClass::widget(['item' => $item]) ?>
     </div>
 </div>
 

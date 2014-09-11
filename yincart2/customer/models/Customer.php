@@ -3,6 +3,8 @@
 namespace yincart\customer\models;
 
 use Yii;
+use yii\base\NotSupportedException;
+use yii\web\IdentityInterface;
 use yincart\base\db\ActiveRecord;
 use yincart\Yincart;
 
@@ -11,9 +13,12 @@ use yincart\Yincart;
  *
  * @property integer $customer_id
  * @property integer $customer_group_id
- * @property string $name
+ * @property string $username
  * @property string $email
- * @property string $password
+ * @property string $auth_key
+ * @property string $password_hash
+ * @property string $password_reset_token
+ * @property string $password write-only password
  * @property integer $register_time
  * @property integer $last_login_time
  * @property integer $status
@@ -26,7 +31,7 @@ use yincart\Yincart;
  *
  * @method static Customer getCustomer(int $id)
  */
-class Customer extends ActiveRecord
+class Customer extends ActiveRecord implements IdentityInterface
 {
     /**
      * @inheritdoc
@@ -42,10 +47,11 @@ class Customer extends ActiveRecord
     public function rules()
     {
         return [
-            [['status'], 'default', 'value' => 0],
-            [['customer_group_id', 'status'], 'integer'],
-            [['name', 'email', 'password'], 'required'],
-            [['name', 'email', 'password'], 'string', 'max' => 45]
+            [['customer_group_id', 'status'], 'default', 'value' => 0],
+            [['password_reset_token'], 'default', 'value' => ''],
+            [['customer_group_id', 'username', 'email', 'auth_key', 'password_hash', 'password_reset_token', 'register_time', 'last_login_time'], 'required'],
+            [['customer_group_id', 'register_time', 'last_login_time', 'status'], 'integer'],
+            [['username', 'email', 'auth_key', 'password_hash', 'password_reset_token'], 'string', 'max' => 45]
         ];
     }
 
@@ -57,9 +63,11 @@ class Customer extends ActiveRecord
         return [
             'customer_id' => Yii::t('yincart', 'Customer ID'),
             'customer_group_id' => Yii::t('yincart', 'Customer Group ID'),
-            'name' => Yii::t('yincart', 'Name'),
+            'username' => Yii::t('yincart', 'Username'),
             'email' => Yii::t('yincart', 'Email'),
-            'password' => Yii::t('yincart', 'Password'),
+            'auth_key' => Yii::t('yincart', 'Auth Key'),
+            'password_hash' => Yii::t('yincart', 'Password Hash'),
+            'password_reset_token' => Yii::t('yincart', 'Password Reset Token'),
             'register_time' => Yii::t('yincart', 'Register Time'),
             'last_login_time' => Yii::t('yincart', 'Last Login Time'),
             'status' => Yii::t('yincart', 'Status'),
@@ -104,5 +112,139 @@ class Customer extends ActiveRecord
     public function getWishes()
     {
         return $this->hasMany(Yincart::$container->wishClass, ['customer_id' => 'customer_id']);
+    }
+
+
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+    const ROLE_USER = 10;
+
+    /**
+     * @inheritdoc
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * Finds user by email
+     *
+     * @param string $email
+     * @return static|null
+     */
+    public static function findByEmail($email)
+    {
+        return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * Finds user by password reset token
+     *
+     * @param string $token password reset token
+     * @return static|null
+     */
+    public static function findByPasswordResetToken($token)
+    {
+        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
+        $parts = explode('_', $token);
+        $timestamp = (int) end($parts);
+        if ($timestamp + $expire < time()) {
+            // token expired
+            return null;
+        }
+
+        return static::findOne([
+            'password_reset_token' => $token,
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getId()
+    {
+        return $this->getPrimaryKey();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getAuthKey()
+    {
+        return $this->auth_key;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function validateAuthKey($authKey)
+    {
+        return $this->getAuthKey() === $authKey;
+    }
+
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return boolean if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
+
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
+
+    /**
+     * Generates "remember me" authentication key
+     */
+    public function generateAuthKey()
+    {
+        $this->auth_key = Yii::$app->security->generateRandomKey();
+    }
+
+    /**
+     * Generates new password reset token
+     */
+    public function generatePasswordResetToken()
+    {
+        $this->password_reset_token = Yii::$app->security->generateRandomKey() . '_' . time();
+    }
+
+    /**
+     * Removes password reset token
+     */
+    public function removePasswordResetToken()
+    {
+        $this->password_reset_token = null;
     }
 }

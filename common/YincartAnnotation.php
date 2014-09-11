@@ -20,6 +20,9 @@ class YincartAnnotation
         $newLine = "\n";
 
         foreach ($classes as $name => $class) {
+            if (in_array($name, ['yii\web\JqueryAsset'])) {
+                continue;
+            }
             $len = 45 - strlen($class);
             $spaces = '';
             while ($len--) {
@@ -58,6 +61,9 @@ class YincartAnnotation
         $newLine = "\n";
 
         foreach ($classes as $name => $class) {
+            if (in_array($name, ['yii\web\JqueryAsset'])) {
+                continue;
+            }
             $len = 45 - strlen($class);
             $spaces = '';
             while ($len--) {

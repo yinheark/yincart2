@@ -38,6 +38,7 @@ use yii\helpers\ArrayHelper;
  * @method static \yincart\catalog\widgets\ItemPropForm                  getItemPropForm(array $config = [])
  * @method static \yincart\customer\widgets\CustomerGrid                 getCustomerGrid(array $config = [])
  * @method static \yincart\sales\widgets\OrderGrid                       getOrderGrid(array $config = [])
+ * @method static \yincart\catalog\widgets\ItemPropSelect                getItemPropSelect(array $config = [])
  *
  * --- Form class methodInstance ---
  * @method static \yincart\models\ModelForm                              getModelForm(array $config = [])
@@ -86,6 +87,7 @@ use yii\helpers\ArrayHelper;
  * @method static string|\yincart\catalog\widgets\ItemPropForm           getItemPropFormClass()
  * @method static string|\yincart\customer\widgets\CustomerGrid          getCustomerGridClass()
  * @method static string|\yincart\sales\widgets\OrderGrid                getOrderGridClass()
+ * @method static string|\yincart\catalog\widgets\ItemPropSelect         getItemPropSelectClass()
  *
  * --- Form class methodClass ---
  * @method static string|\yincart\models\ModelForm                       getModelFormClass()
@@ -162,12 +164,16 @@ class Yincart
  * @property \yincart\catalog\widgets\ItemPropForm                $itemPropForm
  * @property \yincart\customer\widgets\CustomerGrid               $customerGrid
  * @property \yincart\sales\widgets\OrderGrid                     $orderGrid
+ * @property \yincart\catalog\widgets\ItemPropSelect              $itemPropSelect
  *
  * --- Form class propertyInstance ---
  * @property \yincart\models\ModelForm                            $modelForm
  * @property \yincart\models\JqForm                               $jqForm
+ * @property \yincart\customer\models\LoginForm                   $loginForm
+ * @property \yincart\customer\models\RegisterForm                $registerForm
  *
  * --- models class propertyInstance ---
+ * @property \yincart\sales\models\Cart                           $cart
  * @property \yincart\catalog\models\Category                     $category
  * @property \yincart\catalog\models\Item                         $item
  * @property \yincart\catalog\models\ItemImg                      $itemImg
@@ -185,7 +191,6 @@ class Yincart
  * @property \yincart\sales\models\Order                          $order
  * @property \yincart\sales\models\OrderItem                      $orderItem
  * @property \yincart\sales\models\ShippingCart                   $shippingCart
- * @property \yincart\sales\models\Cart                           $cart
  *
  * ================================================================================
  *
@@ -210,12 +215,16 @@ class Yincart
  * @property string|\yincart\catalog\widgets\ItemPropForm         $itemPropFormClass
  * @property string|\yincart\customer\widgets\CustomerGrid        $customerGridClass
  * @property string|\yincart\sales\widgets\OrderGrid              $orderGridClass
+ * @property string|\yincart\catalog\widgets\ItemPropSelect       $itemPropSelectClass
  *
  * --- Form class propertyClass ---
  * @property string|\yincart\models\ModelForm                     $modelFormClass
  * @property string|\yincart\models\JqForm                        $jqFormClass
+ * @property string|\yincart\customer\models\LoginForm            $loginFormClass
+ * @property string|\yincart\customer\models\RegisterForm         $registerFormClass
  *
  * --- models class propertyClass ---
+ * @property string|\yincart\sales\models\Cart                    $cartClass
  * @property string|\yincart\catalog\models\Category              $categoryClass
  * @property string|\yincart\catalog\models\Item                  $itemClass
  * @property string|\yincart\catalog\models\ItemImg               $itemImgClass
@@ -233,7 +242,6 @@ class Yincart
  * @property string|\yincart\sales\models\Order                   $orderClass
  * @property string|\yincart\sales\models\OrderItem               $orderItemClass
  * @property string|\yincart\sales\models\ShippingCart            $shippingCartClass
- * @property string|\yincart\sales\models\Cart                    $cartClass
  *
  * ================================================================================
  *
@@ -258,12 +266,16 @@ class Yincart
  * @method \yincart\catalog\widgets\ItemPropForm                  getItemPropForm(array $config = [])
  * @method \yincart\customer\widgets\CustomerGrid                 getCustomerGrid(array $config = [])
  * @method \yincart\sales\widgets\OrderGrid                       getOrderGrid(array $config = [])
+ * @method \yincart\catalog\widgets\ItemPropSelect                getItemPropSelect(array $config = [])
  *
  * --- Form class methodInstance ---
  * @method \yincart\models\ModelForm                              getModelForm(array $config = [])
  * @method \yincart\models\JqForm                                 getJqForm(array $config = [])
+ * @method \yincart\customer\models\LoginForm                     getLoginForm(array $config = [])
+ * @method \yincart\customer\models\RegisterForm                  getRegisterForm(array $config = [])
  *
  * --- models class methodInstance ---
+ * @method \yincart\sales\models\Cart                             getCart(array $config = [])
  * @method \yincart\catalog\models\Category                       getCategory(array $config = [])
  * @method \yincart\catalog\models\Item                           getItem(array $config = [])
  * @method \yincart\catalog\models\ItemImg                        getItemImg(array $config = [])
@@ -281,7 +293,6 @@ class Yincart
  * @method \yincart\sales\models\Order                            getOrder(array $config = [])
  * @method \yincart\sales\models\OrderItem                        getOrderItem(array $config = [])
  * @method \yincart\sales\models\ShippingCart                     getShippingCart(array $config = [])
- * @method \yincart\sales\models\Cart                             getCart(array $config = [])
  *
  * ================================================================================
  *
@@ -306,12 +317,16 @@ class Yincart
  * @method string|\yincart\catalog\widgets\ItemPropForm           getItemPropFormClass()
  * @method string|\yincart\customer\widgets\CustomerGrid          getCustomerGridClass()
  * @method string|\yincart\sales\widgets\OrderGrid                getOrderGridClass()
+ * @method string|\yincart\catalog\widgets\ItemPropSelect         getItemPropSelectClass()
  *
  * --- Form class methodClass ---
  * @method string|\yincart\models\ModelForm                       getModelFormClass()
  * @method string|\yincart\models\JqForm                          getJqFormClass()
+ * @method string|\yincart\customer\models\LoginForm              getLoginFormClass()
+ * @method string|\yincart\customer\models\RegisterForm           getRegisterFormClass()
  *
  * --- models class methodClass ---
+ * @method string|\yincart\sales\models\Cart                      getCartClass()
  * @method string|\yincart\catalog\models\Category                getCategoryClass()
  * @method string|\yincart\catalog\models\Item                    getItemClass()
  * @method string|\yincart\catalog\models\ItemImg                 getItemImgClass()
@@ -329,7 +344,6 @@ class Yincart
  * @method string|\yincart\sales\models\Order                     getOrderClass()
  * @method string|\yincart\sales\models\OrderItem                 getOrderItemClass()
  * @method string|\yincart\sales\models\ShippingCart              getShippingCartClass()
- * @method string|\yincart\sales\models\Cart                      getCartClass()
  *
  * @package yincart
  * @author jeremy.zhou(gao_lujie@live.cn)

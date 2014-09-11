@@ -20,6 +20,8 @@ return [
         'elFinderAsset'     => 'yincart\assets\ElFinderAsset',
         'ckEditorAsset'     => 'yincart\assets\CkEditorAsset',
         'garbiniAsset'      => 'yincart\assets\GarbiniAsset',
+
+        'cart'              => 'yincart\sales\models\Cart',
     ],
     'class' => [
         //system class
@@ -34,6 +36,7 @@ return [
         'itemPropForm'      => 'yincart\catalog\widgets\ItemPropForm',
         'customerGrid'      => 'yincart\customer\widgets\CustomerGrid',
         'orderGrid'         => 'yincart\sales\widgets\OrderGrid',
+        'itemPropSelect'    => 'yincart\catalog\widgets\ItemPropSelect',
         //form models class
         'modelForm'         => 'yincart\models\ModelForm',
         'jqForm'            => 'yincart\models\JqForm',
@@ -53,10 +56,11 @@ return [
         'customerGroup'     => 'yincart\customer\models\CustomerGroup',
         'wish'              => 'yincart\customer\models\Wish',
         'account'           => 'yincart\customer\models\Account',
+        'loginForm'         => 'yincart\customer\models\LoginForm',
+        'registerForm'      => 'yincart\customer\models\RegisterForm',
         //sales models class
         'order'             => 'yincart\sales\models\Order',
         'orderItem'         => 'yincart\sales\models\OrderItem',
         'shippingCart'      => 'yincart\sales\models\ShippingCart',
-        'cart'              => 'yincart\sales\models\Cart',
     ]
 ];

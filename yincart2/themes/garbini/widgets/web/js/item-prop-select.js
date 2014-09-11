@@ -43,12 +43,18 @@ $(function() {
         });
         selectedProps = selectedProps.join(';');
         var sku = skus[selectedProps];
+        var price = sku ? sku['price'] : item['price'];
+        var priceValue = {};
+        priceValue.intPrice = Math.floor(price);
+        priceValue.floatPrice = Math.floor(price * 100).toString().substr(-2);
+        var priceTpl = $('#item-price').html();
+        var priceHtml = juicer(priceTpl, priceValue);
         if (sku) {
-            $('.price .amount').text(sku['price']);
+            $('.price').html(priceHtml);
             $('.item_stock').text(sku['stock_qty']);
             $('[name="sku_id"]').val(sku['sku_id']);
         } else {
-            $('.price .amount').text(item['price']);
+            $('.price').html(priceHtml);
             $('.item_stock').text(item['stock_qty']);
             $('[name="sku_id"]').val(0);
         }
