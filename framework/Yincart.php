@@ -364,10 +364,10 @@ class Container
             self::$classMap = $classMap;
         }
 
-        foreach ($classMap['singleton'] as $name => $class) {
+        foreach (self::$classMap['singleton'] as $name => $class) {
             \Yii::$container->setSingleton($name, $class);
         }
-        foreach ($classMap['class'] as $name => $class) {
+        foreach (self::$classMap['class'] as $name => $class) {
             \Yii::$container->set($name, $class);
         }
     }
