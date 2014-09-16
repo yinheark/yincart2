@@ -20,7 +20,6 @@ return [
                     '@yincart/customer/widgets/views' => '@yincart/themes/garbini/widgets/views',
                     '@yincart/sales/widgets/views' => '@yincart/themes/garbini/widgets/views',
                 ],
-//                'baseUrl' => '@yincart/web/aceAdmin',
             ],
         ],
     ],

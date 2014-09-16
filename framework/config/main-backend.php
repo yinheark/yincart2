@@ -17,7 +17,6 @@ return [
                     '@yincart/customer/widgets/views' => '@yincart/themes/aceAdmin/widgets/views',
                     '@yincart/sales/widgets/views' => '@yincart/themes/aceAdmin/widgets/views',
                 ],
-//                'baseUrl' => '@yincart/web/aceAdmin',
             ],
         ],
     ],
