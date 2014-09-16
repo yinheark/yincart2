@@ -8,7 +8,7 @@
 return [
     'components' => [
         'user' => [
-            'identityClass' => 'yincart\customer\Customer',
+            'identityClass' => 'yincart\customer\models\Customer',
         ],
         'view' => [
             'theme' => [

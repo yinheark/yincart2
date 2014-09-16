@@ -62,8 +62,13 @@ class RegisterForm extends Model
             $customer = Yincart::$container->getCustomer(['username' => $this->username, 'email' => $this->email]);
             $customer->setPassword($this->password);
             $customer->generateAuthKey();
+            $customer->register_time = $customer->last_login_time = time();
             if ($customer->save()) {
-                \Yii::$app->user->login($customer);
+                if ($customer->needConfirm) {
+                    $customer->sendConfirmEmail();
+                } else if ($customer->loginAfterRegister) {
+                    \Yii::$app->user->login($customer);
+                }
                 return true;
             }
         }

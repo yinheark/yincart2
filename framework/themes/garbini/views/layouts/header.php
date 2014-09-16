@@ -63,6 +63,7 @@ $categoryMenu = $category ? $category->getCategoryMenu() : [];
                             <li><a href="<?= Url::to(['account/login']) ?>">LogIn / Register</a></li>
                         <?php } else { ?>
                             <li><a href="<?= Url::to(['account/index']) ?>"><?= Yii::$app->getUser()->getIdentity()->username ?></a></li>
+                            <li><a href="<?= Url::to(['account/logout']) ?>">Logout</a></li>
                         <?php } ?>
                     </ul>
                 </div>

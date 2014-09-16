@@ -47,11 +47,12 @@ class Customer extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['customer_group_id', 'status'], 'default', 'value' => 0],
+            [['customer_group_id', 'status'], 'default', 'value' => 1],
             [['password_reset_token'], 'default', 'value' => ''],
-            [['customer_group_id', 'username', 'email', 'auth_key', 'password_hash', 'password_reset_token', 'register_time', 'last_login_time'], 'required'],
+            [['customer_group_id', 'username', 'email', 'auth_key', 'password_hash', 'register_time', 'last_login_time'], 'required'],
             [['customer_group_id', 'register_time', 'last_login_time', 'status'], 'integer'],
-            [['username', 'email', 'auth_key', 'password_hash', 'password_reset_token'], 'string', 'max' => 45]
+            [['username', 'email', 'auth_key'], 'string', 'max' => 45],
+            [['password_hash', 'password_reset_token'], 'string', 'max' => 255]
         ];
     }
 
@@ -116,15 +117,18 @@ class Customer extends ActiveRecord implements IdentityInterface
 
 
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
-    const ROLE_USER = 10;
+    const STATUS_ACTIVE = 1;
+
+    public $needConfirm = true;
+
+    public $loginAfterRegister = true;
 
     /**
      * @inheritdoc
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['customer_id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -246,5 +250,21 @@ class Customer extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public function sendConfirmEmail()
+    {
+        return Yii::$app->getMailer()->compose('account/confirm', ['customer' => $this])
+            ->setFrom(Yii::$app->params['adminEmail'])
+            ->setTo($this->email)
+            ->send();
+    }
+
+    public function sendResetPasswordEmail()
+    {
+        return Yii::$app->getMailer()->compose('account/resetPassword', ['customer' => $this])
+            ->setFrom(Yii::$app->params['adminEmail'])
+            ->setTo($this->email)
+            ->send();
     }
 }
