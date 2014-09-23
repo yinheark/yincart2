@@ -1,9 +1,9 @@
-Yincart PHP Framework Version 2
+Yincart E-Commerce Framework Version 2
 ===========================
 
-Thank you for choosing Yincart 2 - a modern PHP framework designed for professional Web development.
+Thank you for choosing Yincart 2 - a modern e-commerce framework designed for professional Web development.
 
-Yincart 2 is a complete rewrite of its previous version Yincart 1.1 which is one of the most popular PHP frameworks.
+Yincart 2 is a complete rewrite of its previous version Yincart 1.1 which is one of the most popular e-commerce frameworks.
 Yincart 2 inherits the main spirit behind Yincart for being simple, fast and highly extensible.
 Yincart 2 requires PHP 5.4 and embraces the best practices and protocols found in modern Web application development.
 
