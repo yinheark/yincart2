@@ -1,11 +1,13 @@
-Yii 2 Advanced Application Template
+Yincart 2 Advanced Application Template
 ===================================
 
-Yii 2 Advanced Application Template is a skeleton Yii 2 application best for
+Base on Yii 2 Advanced Application Template
+
+Yincart 2 Advanced Application Template is a skeleton Yincart 2 application best for
 developing complex Web applications with multiple tiers.
 
 The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+is a separate Yincart application.
 
 The template is designed to work in a team development environment. It supports
 deploying the application in different environments.

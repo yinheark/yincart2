@@ -1,7 +1,9 @@
-Yii 2 Basic Application Template
+Yincart 2 Basic Application Template
 ================================
 
-Yii 2 Basic Application Template is a skeleton Yii 2 application best for
+Base on Yii 2 Basic Application Template
+
+Yincart 2 Basic Application Template is a skeleton Yincart 2 application best for
 rapidly creating small projects.
 
 The template contains the basic features including user login/logout and a contact page.
@@ -83,6 +85,6 @@ return [
 ];
 ```
 
-**NOTE:** Yii won't create the database for you, this has to be done manually before you can access it.
+**NOTE:** Yincart won't create the database for you, this has to be done manually before you can access it.
 
 Also check and edit the other files in the `config/` directory to customize your application.
