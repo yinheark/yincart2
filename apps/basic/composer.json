@@ -25,7 +25,7 @@
         "PaulGuo/Juicer": "0.6.5-stable",
         "Studio-42/elFinder": "2.0-rc1",
         "ckeditor/ckeditor-releases": "4.4.3",
-        "yinheark/yincart2": "0.1.0"
+        "yinheark/yincart2": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -117,18 +117,6 @@
                 "dist": {
                     "url": "https://codeload.github.com/ckeditor/ckeditor-releases/zip/4.4.3",
                     "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "yinheark/yincart2",
-                "version": "0.1.0",
-                "source": {
-                    "url": "http://121.40.137.221:7990/scm/yin2/yincart2-framework.git",
-                    "type": "git",
-                    "reference": "master"
                 }
             }
         }
