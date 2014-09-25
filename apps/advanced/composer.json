@@ -4,7 +4,7 @@
     "keywords": ["yincart2", "framework", "advanced", "application template"],
     "homepage": "http://www.yincart.com/",
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "GPLv3.0",
     "support": {
         "issues": "https://github.com/yinheark/yincart2/issues?state=open",
         "forum": "http://www.yincart.com/forum/",

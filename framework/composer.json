@@ -4,7 +4,7 @@
 	"keywords": ["yincart2", "framework"],
 	"homepage": "http://www.yincart.com/",
 	"type": "library",
-	"license": "BSD-3-Clause",
+	"license": "GPLv3.0",
 	"authors": [
 		{
             "name": "He Yin",
