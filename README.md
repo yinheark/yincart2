@@ -42,5 +42,11 @@ to do
 HOW TO PARTICIPATE
 ------------------
 
+Yincart2的设计理念：我们将yincart2打造成一个商城系统的类库，其中包含商城的逻辑，部分控制器和视图主题。
+用户只需要用composer(composer的知识内容请自行百度谷歌)引入yincart2framework代码，并在index.php中加载yincart2的前(后台)配置
+一个拥有基本功能的商城系统就可以运行了
+二次开发：我们的建议是不修改Yincart2的源代码，使用继承重写的方式实现自己的功能。
+Yii2的controllerMap是实现了路由与控制器的映射，如果需要修改yincart2的控制器，
+
 **Your participation to Yincart 2 development is very welcome!**
 
