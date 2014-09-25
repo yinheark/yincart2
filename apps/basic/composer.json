@@ -1,16 +1,16 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Application Template",
-    "keywords": ["yii2", "framework", "basic", "application template"],
-    "homepage": "http://www.yiiframework.com/",
+    "name": "yinheark/yincart2-app-basic",
+    "description": "Yincart 2 Basic Application Template",
+    "keywords": ["yincart2", "framework", "basic", "application template"],
+    "homepage": "http://www.yincart.com/",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
+        "issues": "https://github.com/yinheark/yincart2/issues?state=open",
+        "forum": "http://www.yincart.com/forum/",
+        "wiki": "http://www.yincart.com/wiki/",
+        "irc": "irc://irc.freenode.net/yincart",
+        "source": "https://github.com/yinheark/yincart2"
     },
     "minimum-stability": "dev",
     "require": {
@@ -25,7 +25,7 @@
         "PaulGuo/Juicer": "0.6.5-stable",
         "Studio-42/elFinder": "2.0-rc1",
         "ckeditor/ckeditor-releases": "4.4.3",
-        "yinsoft/yincart2": "0.1.0"
+        "yinheark/yincart2": "0.1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -123,7 +123,7 @@
         {
             "type": "package",
             "package": {
-                "name": "yinsoft/yincart2",
+                "name": "yinheark/yincart2",
                 "version": "0.1.0",
                 "source": {
                     "url": "http://121.40.137.221:7990/scm/yin2/yincart2-framework.git",

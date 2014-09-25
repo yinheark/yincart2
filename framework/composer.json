@@ -1,5 +1,5 @@
 {
-	"name": "yinsoft/yincart2",
+	"name": "yinheark/yincart2",
 	"description": "Yincart PHP Framework Version 2",
 	"keywords": ["yincart2", "framework"],
 	"homepage": "http://www.yincart.com/",
@@ -20,11 +20,11 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/yinsoft/yincart2/issues?state=open",
+		"issues": "https://github.com/yinheark/yincart2/issues?state=open",
 		"forum": "http://www.yincart.com/forum/",
 		"wiki": "http://www.yincart.com/wiki/",
 		"irc": "irc://irc.freenode.net/yincart",
-		"source": "https://github.com/yinsoft/yincart2"
+		"source": "https://github.com/yinheark/yincart2"
 	},
     "require": {
         "php": ">=5.4.0",
