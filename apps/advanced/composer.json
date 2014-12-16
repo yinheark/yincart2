@@ -1,125 +1,70 @@
 {
-    "name": "yinheark/yincart2-app-advanced",
-    "description": "Yincart 2 Advanced Application Template",
-    "keywords": ["yincart2", "framework", "advanced", "application template"],
-    "homepage": "http://www.yincart.com/",
+    "name": "gaolujie/kiwi",
+    "description": "kiwi common application template base on yii2",
+    "keywords": [
+        "kiwi",
+        "yii2"
+    ],
     "type": "project",
-    "license": "GPLv3.0",
+    "license": "GPL v3.0",
     "support": {
-        "issues": "https://github.com/yinheark/yincart2/issues?state=open",
-        "forum": "http://www.yincart.com/forum/",
-        "wiki": "http://www.yincart.com/wiki/",
-        "irc": "irc://irc.freenode.net/yincart",
-        "source": "https://github.com/yinheark/yincart2"
+        "issues": "https://github.com/gaolujie/Kiwi/issues?state=open",
+        "wiki": "https://github.com/gaolujie/Kiwi/wiki/",
+        "source": "https://github.com/gaolujie/Kiwi"
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": "*",
-        "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*",
-        "yiisoft/yii2-imagine": "*",
-        "twbs/bootstrap": "3.2.0",
-        "zTree/zTree_v3": "3.5.17-beta.2",
-        "malsup/form": "3.50",
-        "PaulGuo/Juicer": "0.6.5-stable",
-        "Studio-42/elFinder": "2.0-rc1",
-        "ckeditor/ckeditor-releases": "4.4.3",
-        "yinheark/yincart2": "*"
+        "yiisoft/yii2": "2.0.0",
+        "yiisoft/yii2-bootstrap": "2.0.0",
+        "yiisoft/yii2-swiftmailer": "2.0.0",
+        "bower-asset/bootstrap": "3.2.0",
+        "mihaildev/yii2-ckeditor": "*",
+        "mihaildev/yii2-elfinder": "*",
+        "2amigos/yii2-file-upload-widget": "*",
+        "creocoder/yii2-nested-set-behavior": "*",
+        "gilek/yii2-gtreetable": "dev-master",
+        "mtdowling/cron-expression": "1.0.*",
+        "kartik-v/yii2-widgets": "*",
+        "kartik-v/yii2-grid": "*",
+        "kartik-v/yii2-dynagrid": "*",
+        "kartik-v/yii2-builder": "*",
+        "kartik-v/yii2-detail-view": "*",
+        "kartik-v/yii2-label-inplace": "*",
+        "kartik-v/yii2-helpers": "*",
+        "kartik-v/yii2-icons": "*",
+        "kartik-v/yii2-dropdown-x": "*",
+        "kartik-v/yii2-nav-x": "*",
+        "kartik-v/yii2-context-menu": "*",
+        "kartik-v/yii2-slider": "*",
+        "kartik-v/yii2-field-range": "*",
+        "kartik-v/yii2-password": "*",
+        "kartik-v/yii2-sortable": "*",
+        "kartik-v/yii2-sortable-input": "*",
+        "kartik-v/yii2-social": "*",
+        "kartik-v/yii2-checkbox-x": "*",
+        "kartik-v/yii2-markdown": "*",
+        "kartik-v/yii2-date-range": "*",
+        "kartik-v/yii2-datecontrol": "*",
+        "kartik-v/yii2-money": "*",
+        "kartik-v/yii2-popover-x": "*",
+        "kartik-v/yii2-tabs-x": "*",
+        "kartik-v/yii2-editable": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-codeception": "*",
-        "yiisoft/yii2-debug": "*",
-        "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
-    },
-    "suggest": {
-        "codeception/codeception": "Codeception, 2.0.* is currently works well with Yii.",
-        "codeception/specify": "BDD style code blocks for PHPUnit and Codeception",
-        "codeception/verify": "BDD Assertions for PHPUnit and Codeception",
-        "yiisoft/yii2-faker": "Fixtures generator for Yii2 based on Faker lib"
-    },
-    "scripts": {
-        "post-create-project-cmd": [
-            "yii\\composer\\Installer::setPermission"
-        ]
+        "yiisoft/yii2-codeception": "2.0.0",
+        "yiisoft/yii2-debug": "2.0.0",
+        "yiisoft/yii2-gii": "2.0.0",
+        "yiisoft/yii2-faker": "2.0.0"
     },
     "config": {
         "process-timeout": 1800
     },
     "extra": {
-        "writable": [
-            "backend/runtime",
-            "backend/web/assets",
-
-            "frontend/runtime",
-            "frontend/web/assets"
-        ]
-    },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "zTree/zTree_v3",
-                "version": "3.5.17-beta.2",
-                "source": {
-                    "url": "https://github.com/zTree/zTree_v3.git",
-                    "type": "git",
-                    "reference": "tags/v3.5.17-beta.2"
-                },
-                "dist": {
-                    "url": "https://codeload.github.com/zTree/zTree_v3/zip/v3.5.17-beta.2",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "PaulGuo/Juicer",
-                "version": "0.6.5-stable",
-                "source": {
-                    "url": "https://github.com/PaulGuo/Juicer.git",
-                    "type": "git",
-                    "reference": "tags/0.6.5-stable"
-                },
-                "dist": {
-                    "url": "https://codeload.github.com/PaulGuo/Juicer/zip/0.6.5-stable",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "Studio-42/elFinder",
-                "version": "2.0-rc1",
-                "source": {
-                    "url": "https://github.com/Studio-42/elFinder.git",
-                    "type": "git",
-                    "reference": "branches/2.x"
-                },
-                "dist": {
-                    "url": "https://codeload.github.com/Studio-42/elFinder/zip/2.x",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/ckeditor-releases",
-                "version": "4.4.3",
-                "source": {
-                    "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                    "type": "git",
-                    "reference": "tags/4.4.3"
-                },
-                "dist": {
-                    "url": "https://codeload.github.com/ckeditor/ckeditor-releases/zip/4.4.3",
-                    "type": "zip"
-                }
-            }
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
         }
-    ]
+    }
 }

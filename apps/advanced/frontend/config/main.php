@@ -7,12 +7,13 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-frontend',
+    'id' => 'frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'user' => [
+            'identityClass' => 'yincart\customer\models\Customer',
             'enableAutoLogin' => true,
         ],
         'log' => [

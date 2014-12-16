@@ -1,31 +1,23 @@
 {
-    "name": "yinheark/yincart2-app-basic",
-    "description": "Yincart 2 Basic Application Template",
-    "keywords": ["yincart2", "framework", "basic", "application template"],
-    "homepage": "http://www.yincart.com/",
+    "name": "yiisoft/yii2-app-basic",
+    "description": "Yii 2 Basic Application Template",
+    "keywords": ["yii2", "framework", "basic", "application template"],
+    "homepage": "http://www.yiiframework.com/",
     "type": "project",
-    "license": "GPLv3.0",
+    "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yinheark/yincart2/issues?state=open",
-        "forum": "http://www.yincart.com/forum/",
-        "wiki": "http://www.yincart.com/wiki/",
-        "irc": "irc://irc.freenode.net/yincart",
-        "source": "https://github.com/yinheark/yincart2"
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
     },
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*",
-        "yiisoft/yii2-imagine": "*",
-        "twbs/bootstrap": "3.2.0",
-        "zTree/zTree_v3": "3.5.17-beta.2",
-        "malsup/form": "3.50",
-        "PaulGuo/Juicer": "0.6.5-stable",
-        "Studio-42/elFinder": "2.0-rc1",
-        "ckeditor/ckeditor-releases": "4.4.3",
-        "yinheark/yincart2": "*"
+        "yiisoft/yii2-swiftmailer": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -33,92 +25,25 @@
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*"
     },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::setPermission",
+            "yii\\composer\\Installer::generateCookieValidationKey"
+        ]
+    },
     "config": {
         "process-timeout": 1800
     },
-    "scripts": {
-        "post-create-project-cmd": [
-            "yii\\composer\\Installer::postCreateProject"
-        ]
-    },
     "extra": {
-        "yii\\composer\\Installer::postCreateProject": {
-            "setPermission": [
-                {
-                    "runtime": "0777",
-                    "web/assets": "0777",
-                    "yii": "0755"
-                }
-            ],
-            "generateCookieValidationKey": [
-                "config/web.php"
-            ]
-        }
-    },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "zTree/zTree_v3",
-                "version": "3.5.17-beta.2",
-                "source": {
-                    "url": "https://github.com/zTree/zTree_v3.git",
-                    "type": "git",
-                    "reference": "tags/v3.5.17-beta.2"
-                },
-                "dist": {
-                    "url": "https://codeload.github.com/zTree/zTree_v3/zip/v3.5.17-beta.2",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "PaulGuo/Juicer",
-                "version": "0.6.5-stable",
-                "source": {
-                    "url": "https://github.com/PaulGuo/Juicer.git",
-                    "type": "git",
-                    "reference": "tags/0.6.5-stable"
-                },
-                "dist": {
-                    "url": "https://codeload.github.com/PaulGuo/Juicer/zip/0.6.5-stable",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "Studio-42/elFinder",
-                "version": "2.0-rc1",
-                "source": {
-                    "url": "https://github.com/Studio-42/elFinder.git",
-                    "type": "git",
-                    "reference": "branches/2.x"
-                },
-                "dist": {
-                    "url": "https://codeload.github.com/Studio-42/elFinder/zip/2.x",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/ckeditor-releases",
-                "version": "4.4.3",
-                "source": {
-                    "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                    "type": "git",
-                    "reference": "tags/4.4.3"
-                },
-                "dist": {
-                    "url": "https://codeload.github.com/ckeditor/ckeditor-releases/zip/4.4.3",
-                    "type": "zip"
-                }
-            }
-        }
-    ]
+        "writable": [
+            "runtime",
+            "web/assets"
+        ],
+        "executable": [
+            "yii"
+        ],
+        "config": [
+            "config/web.php"
+        ]
+    }
 }
