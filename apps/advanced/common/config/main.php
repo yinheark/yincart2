@@ -33,14 +33,14 @@ return [
         ],
     ],
     'aliases' => [
-        'modules' => dirname(dirname(__DIR__)) . '/common/modules',
-        'webapp' => dirname(dirname(__DIR__)) . '/webapp',
+        'modules' => dirname(dirname(dirname(dirname(__DIR__)))) . '/lib',
+//        'webapp' => dirname(dirname(__DIR__)) . '/webapp',
         'upload' => dirname(dirname(__DIR__)) . '/upload',
     ],
     'bootstrap' => [
         'kiwi' => [
            'class' =>  'kiwi\Bootstrap',
-           'codePools' =>  ['@modules', '@webapp'],
+           'codePools' =>  ['@modules'],
        ]
     ],
     'params' => [
