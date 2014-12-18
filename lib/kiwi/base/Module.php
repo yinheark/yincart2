@@ -36,7 +36,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
 //            $this->loadControllerMap();
 //            $this->loadViewPathMap();
 //            $this->loadCustomConfig();
-            foreach (['migrateUp', 'loadClassMap', 'loadCustomConfig'] as $func) {
+            foreach (['loadClassMap', 'loadCustomConfig', 'migrateUp'] as $func) {
                 \Yii::beginProfile(get_called_class() . '->' . $func, __METHOD__);
                 $this->$func();
                 \Yii::endProfile(get_called_class() . '->' . $func, __METHOD__);

@@ -36,11 +36,14 @@ return [
         'modules' => dirname(dirname(__DIR__)) . '/common/modules',
         'webapp' => dirname(dirname(__DIR__)) . '/webapp',
         'upload' => dirname(dirname(__DIR__)) . '/upload',
+        'lib' => dirname(dirname(dirname(__DIR__))) . '/lib',
+        'apps' => dirname(dirname(dirname(__DIR__))) . '/apps',
+        'themes' => dirname(dirname(dirname(__DIR__))) . '/themes',
     ],
     'bootstrap' => [
         'kiwi' => [
            'class' =>  'kiwi\Bootstrap',
-           'codePools' =>  ['@modules', '@webapp'],
+           'codePools' =>  ['@lib', '@apps', '@themes'],
        ]
     ],
     'params' => [

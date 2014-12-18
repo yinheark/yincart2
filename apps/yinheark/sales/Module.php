@@ -5,7 +5,7 @@
  * @Time 20:11
  */
 
-namespace extensions\sales;
+namespace apps\yinheark\sales;
 
 use kiwi\Kiwi;
 use yii\base\Event;

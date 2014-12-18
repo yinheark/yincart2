@@ -5,7 +5,7 @@
  * @Time 20:11
  */
 
-namespace themes\xmas;
+namespace themes\yinheark\xmas;
 
 use kiwi\Kiwi;
 
