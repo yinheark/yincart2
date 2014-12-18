@@ -1,0 +1,238 @@
+/* Large Devices Styles Starts */
+
+@media (min-width: 1200px) {
+
+/* Tooltip Styles Starts */
+	
+	.header-links .tooltip{
+		display:none !important;
+	}
+	
+}
+
+/* Medium Devices Styles Starts */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+/* Tooltip Styles Starts */
+	
+	.header-links .tooltip{
+		display:none !important;
+	}
+
+/* Cart Style Starts */	
+
+	#cart .btn{
+	}
+		#cart .btn .fa-shopping-cart{
+			margin-right:7px;
+		}
+		#cart .btn span#cart-total{
+			padding:0 5px;
+		}
+		#cart .btn i.fa-caret-down{
+			margin-left:0;
+		}
+		
+/* Products Box Styles */
+
+	.product-col.list .image{
+		padding:40px 30px 10px 0;
+	}
+	.product-col .btn-cart{
+		margin-top:5px;
+	}
+
+/* Footer Links Styles Starts */
+
+	.footer-links h5{
+		margin:10px 0;
+	}
+
+/* Copyright Styles Starts */
+	
+	.copyright{
+		font-size:13px;
+	}
+		.copyright p.pull-left, .copyright ul{
+			text-align:center;
+			float:none !important;
+		}
+
+}
+
+/* Small Devices Styles Starts */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+/* Logo Styles Starts */
+
+	#logo .img-responsive{
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+/* Main Menu Styles Starts */
+
+	#main-menu .navbar-nav > li a{
+		font-size:13px;
+		padding-left:6px;
+		padding-right:6px;
+	}
+	
+/* Products Box Styles */
+
+	.product-col.list .image{
+		padding:40px 30px 10px 0;
+	}	
+	
+/* Pagination Styles Starts */
+
+	.pagination{
+		margin-bottom:15px; 
+	}
+	.results{	
+		padding-top:5px;
+	}
+	
+/* Footer Links Styles Starts */
+
+	.footer-links h5{
+		margin:10px 0;
+	}
+	
+/* Copyright Styles Starts */
+	
+	.copyright{
+		font-size:12px;
+	}
+		.copyright p.pull-left, .copyright ul{
+			text-align:center;
+			float:none !important;
+		}
+	
+}
+
+/* Extra Small Devices Styles Starts */
+
+@media (max-width: 767px) {
+
+/* Responsive Image Styles Starts */
+
+	#logo .img-responsive, .col3-banners .img-responsive, .col2-banners .img-responsive, .product-col .img-responsive{
+		margin:0 auto;
+	}
+	
+/* Main Menu Styles Starts */
+
+	#main-menu .dropdown-inner ul {
+		display:block;
+	}
+
+/* Header Links Styles Starts */
+
+		.header-links ul.pull-left{
+			float:none !important;
+			text-align:center;
+		}
+			.header-links li a{	
+				padding:10px 3px 0;
+			}
+		
+/* Currency & Languages Drop Down Styles Starts */
+
+		.header-top .pull-right{
+			float:none !important;
+			text-align:center;
+		}
+			.header-top .btn-link{
+				margin:0 0 10px;
+			}
+			
+/* Slider Section Styles Starts */
+
+	.slider{
+		margin-bottom:20px;
+	}	
+
+/* Latest Products Styles Starts */
+
+	.product-head, .product-col{
+		text-align:center;
+	}
+		.product-col.list .image{
+			float:none;
+			padding:0;
+		}
+			
+/* Three Column Banner Styles Starts */
+
+	.col3-banners{
+		margin-bottom:10px;
+	}
+		.col3-banners li + li{
+			margin-top:20px;
+		}
+
+/* Two Column Banner Styles Starts */
+
+	.col2-banners{
+		margin-bottom:10px;
+	}
+		.col2-banners li + li{
+			margin-top:20px;
+		}		
+		
+/* Page Content Styles Starts */
+
+	.page-box h3{
+		margin-top:20px;
+	}		
+	
+/* Tabs Styles Starts */
+
+	.tabs-panel .nav-tabs > li{
+		display:block;
+		float:none;
+	}
+	
+/* Pagination Styles Starts */
+
+	.pagination-block{
+		text-align:center;
+	}
+		.pagination{
+			margin-bottom:10px; 
+		}
+	.results{
+		text-align:center;
+		padding-top:0;
+		margin-bottom:15px;
+	}	
+
+/* Footer Links Styles Starts */
+	
+	.footer-links .col-sm-6, .footer-links .last{
+		text-align:center;
+	}
+	.footer-links .col-sm-6{
+		margin-bottom:20px;
+	}
+	.footer-links h5{
+		margin:10px 0;
+	}
+
+/* Copyright Styles Starts */
+	
+	.copyright{
+		font-size:11px;
+	}
+		.copyright p.pull-left, .copyright ul{
+			text-align:center;
+			float:none !important;
+		}
+			.copyright li{
+				padding:0 2px;
+			}
+	
+}
